@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Register</title>
+</head>
+<body bgcolor=#D1F2EB font-color=#1C2833>
+ <center><h1>Registration Form</h1></center>
+ <hr>
+ <form name="regForm" action="register.php" method="POST">
+  <label for="name">Name</label><br>
+   <input type="text" name="first_name" placeholder="First Name">
+   <input type="text" name="middle_name" placeholder="Middle Name">
+   <input type="text" name="last_name" placeholder="Last Name">
+  <br><br>
+  <label for="dob">Date of Birth</label><br>
+   <input type="date" name="dob">
+  <br><br>
+  <label for="gender">Gender</label><br>
+   <input type="radio" name="gender" value="male">Male<br>
+   <input type="radio" name="gender" value="female">Female<br>
+   <input type="radio" name="gender" value="other">Other<br><br>
+  <label for="mobile">Mobile</label><br>
+   <input type="tel" name="mobile" placeholder="10 Digit Mobile Number">
+  <br><br>
+  <label for="e-mail">E-mail</label><br>
+   <input type="email" name="e-mail" placeholder="you@example.com">
+  <br><br>
+  <label for="address">Address</label><br>
+   <input type="text" name="address-line-1" placeholder="Address Line 1" maxlength=50><br>
+   <input type="text" name="address-line-2" placeholder="Address Line 2" maxlength=50><br>
+   <input type="text" name="city" placeholder="City">
+   <input type="text" name="state" placeholder="State"><br>
+   <input type="text" name="pincode" pattern="[0-9]{6}" placeholder="PinCode">
+  <br><br>
+  <label for="cid">Customer ID</label><br>
+   <input type=text name="cid" pattern="[0-9]{8}">
+  <br><br><br>
+  <label for="password"> Password </label><br>
+   <input type="password" name="password" placeholder="create password"><br><br>
+  <button  type="submit">Register</button>
+  <button type="reset">Clear</button>
+ </form>
+</body>
+</html>
