@@ -9,11 +9,14 @@ try {
 	echo "id: ";
 	echo $_SESSION["uid"];
 	if ($_SESSION['uid'] > 0) {
-	echo "<script>location.href = 'customerPage.php';</script>";
+		echo "<script>location.href = 'customerPage.php';</script>";
+	}
+	else if($_SESSION['uid'] == 0){
+		echo "<script>location.href = 'adminPage.php';</script>";
 	}
 	else {
-	echo "<script>window.alert('Incorrect Login Credentials');
-	location.href = 'login.html';</script>";
+		echo "<script>window.alert('Incorrect Login Credentials');
+		location.href = 'login.html';</script>";
 	}
 } catch (\PDOException $e) {
 	echo $e->getMessage();
@@ -29,4 +32,5 @@ function checkUser($pdo) {
 	$res = $stmt->fetch(\PDO::FETCH_ASSOC);
 	return $res['id'];
 }
+$pdo=NULL;
 ?>

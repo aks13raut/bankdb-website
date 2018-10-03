@@ -1,7 +1,7 @@
 <?php
 include 'Connection.php';
 session_start();
-#echo $_SESSION["uid"];
+
 try {
 	$pdo = Connection::get()->connect();
 	$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -25,7 +25,7 @@ class TableRows extends RecursiveIteratorIterator {
 }
 
 function getCustomer($pdo) {
-	$sql = "SELECT customer.id FROM customer,user WHERE user.id=:uid;";
+	$sql = "SELECT customer.id FROM customer INNER JOIN user ON customer.email=user.email WHERE user.id=:uid;";
 	$stmt = $pdo->prepare($sql);
 	$stmt->bindValue(':uid', $_SESSION['uid']);
 	$stmt->execute();
@@ -60,6 +60,21 @@ function displayAcc($pdo) {
 	echo "</table>";
 	return;
 }
+function displayTransaction($pdo) {
+	$sql = "SELECT * FROM transaction WHERE from_acc in (SELECT acc_no FROM account WHERE holder=:cid)
+	or to_acc in (SELECT acc_no FROM account WHERE holder=:cid) order by date_time;";
+	$stmt = $pdo->prepare($sql);
+	$stmt->bindValue(':cid', $_SESSION['cid']);
+	$stmt->execute();
+	$res = $stmt->setFetchMode(\PDO::FETCH_ASSOC);
+	echo "<table style='border: solid 1px black;'>";
+	echo "<tr><th>TID</th><th>FROM</th><th>TO</th><th>Amount</th><th>Date & Time</th></tr>";
+	foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
+		echo $v;
+	}
+	echo "</table>";
+	return;
+}
 ?>
 <html>
 <head><title>Dashboard</title></head>
@@ -67,10 +82,13 @@ function displayAcc($pdo) {
 <h4>Your Details</h4>
 <?php
 displayCustomer($pdo);
-?>
-<h4>Your Accounts</h4>
-<?php
+echo "<h4>Your Accounts</h4>";
 displayAcc($pdo);
+echo "<h4>Your Transactions</h4>";
+displayTransaction($pdo);
 ?>
 </body>
 </html>
+<?php
+$pdo=NULL;
+?>

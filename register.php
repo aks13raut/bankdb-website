@@ -67,4 +67,5 @@ function insertUser($pdo) {
 	$stmt->execute();
 	return $pdo->lastInsertId();
 }
+$pdo=NULL;
 ?>
