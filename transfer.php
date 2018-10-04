@@ -1,7 +1,10 @@
 <?php
 include 'Connection.php';
 session_start();
-
+if (!isset($_SESSION["uid"]) or $_SESSION["uid"]<=0){
+	echo "Error: Login first, To access this page";
+	header('Location:login.html');
+}
 try {
 	$pdo = Connection::get()->connect();
 	$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

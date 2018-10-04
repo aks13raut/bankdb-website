@@ -1,7 +1,10 @@
 <?php
 include 'Connection.php';
 session_start();
-
+if ($_SESSION["uid"]<=0 or !isset($_SESSION["uid"])){
+	echo "Error: Login first, To access this page";
+	header('Location:login.html');
+}
 try {
 	$pdo = Connection::get()->connect();
 	$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -79,6 +82,8 @@ function displayTransaction($pdo) {
 <html>
 <head><title>Dashboard</title></head>
 <body>
+ <a href="transfer.php">Transfer Money</a><br>
+ <a href="addAcc.html">Add Account</a><br>
 <h4>Your Details</h4>
 <?php
 displayCustomer($pdo);

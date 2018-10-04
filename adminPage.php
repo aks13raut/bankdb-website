@@ -1,7 +1,10 @@
 <?php
 include 'Connection.php';
 session_start();
-
+if ($_SESSION["uid"]!=0 or !isset($_SESSION["uid"])){
+	echo "Login as Admin to access this page";
+	header('Location:login.html');
+}
 try {
 	$pdo = Connection::get()->connect();
 	$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

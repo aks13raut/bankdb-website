@@ -12,7 +12,7 @@ try {
 	
 	echo "
 	<script>window.alert('Registration Successfull');
-	location.href = 'index.html';</script>";
+	location.href = 'login.html';</script>";
 } catch (\PDOException $e) {
 	echo $e->getMessage();
 }

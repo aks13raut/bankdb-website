@@ -1,8 +1,17 @@
 <?php
 include 'Connection.php';
-
 session_start();
-
+function checkUser($pdo) {
+	
+	$sql = "SELECT id FROM user WHERE email = :email AND :pswd = AES_DECRYPT(pswd,'********');";
+	$stmt = $pdo->prepare($sql);
+	$stmt->bindValue(':email', $_POST['e-mail']);
+	$stmt->bindValue(':pswd', $_POST['password']);
+	$stmt->execute();
+	$res = $stmt->fetch(\PDO::FETCH_ASSOC);
+	return $res['id'];
+}
+if (isset($_POST["e-mail"])){
 try {
 	$pdo = Connection::get()->connect();
 	$_SESSION["uid"] = checkUser($pdo);
@@ -21,16 +30,6 @@ try {
 } catch (\PDOException $e) {
 	echo $e->getMessage();
 }
-
-function checkUser($pdo) {
-	
-	$sql = "SELECT id FROM user WHERE email = :email AND :pswd = AES_DECRYPT(pswd,'********');";
-	$stmt = $pdo->prepare($sql);
-	$stmt->bindValue(':email', $_POST['e-mail']);
-	$stmt->bindValue(':pswd', $_POST['password']);
-	$stmt->execute();
-	$res = $stmt->fetch(\PDO::FETCH_ASSOC);
-	return $res['id'];
-}
 $pdo=NULL;
+}
 ?>

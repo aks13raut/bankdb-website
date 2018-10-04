@@ -1,15 +1,6 @@
 <?php
 include 'Connection.php';
-
 session_start();
-
-try {
-	$pdo = Connection::get()->connect();
-	addAccount($pdo);
-} catch (\PDOException $e) {
-	echo $e->getMessage();
-}
-
 function addAccount($pdo) {
 	
 	$sql = "INSERT INTO account(acc_no,holder,status) VALUES(:acc,:cid,'unapproved');";
@@ -23,5 +14,13 @@ function addAccount($pdo) {
 	}
 	return;
 }
+if (isset($_SESSION["cid"])){
+try {
+	$pdo = Connection::get()->connect();
+	addAccount($pdo);
+} catch (\PDOException $e) {
+	echo $e->getMessage();
+}
 $pdo=NULL;
+}
 ?>

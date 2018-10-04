@@ -1,7 +1,7 @@
 <?php
 include 'Connection.php';
 session_start();
-
+if (isset($_SESSION["cid"])){
 try {
 	$pdo = Connection::get()->connect();
 	$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
@@ -43,10 +43,11 @@ location.href = 'transfer.php';</script>";
 	$stmt->bindValue(':amount', $_POST['amount']);
 	$stmt->execute();
 	$pdo->commit();
-	
-	return;
+	echo "<script>window.alert('Transfer Successful.');
+location.href = 'customerPage.php';</script>";
 } catch (\PDOException $e) {
 	echo $e->getMessage();
 }
 $pdo=NULL;
+}
 ?>
