@@ -1,44 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
- <title>Register</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="register.css">
+	<title>Register</title>
+	
 </head>
-<body bgcolor=#D1F2EB font-color=#1C2833>
- <center><h1>Registration Form</h1></center>
- <hr>
- <form name="regForm" action="register.php" method="POST">
-  <label for="name">Name</label><br>
-   <input type="text" name="first_name" pattern="\[a-zA-Z]+" placeholder="First Name">
-   <input type="text" name="middle_name" placeholder="Middle Name">
-   <input type="text" name="last_name" placeholder="Last Name">
-  <br><br>
-  <label for="dob">Date of Birth</label><br>
-   <input type="date" name="dob">
-  <br><br>
-  <label for="gender">Gender</label><br>
-   <input type="radio" name="gender" value="male">Male<br>
-   <input type="radio" name="gender" value="female">Female<br>
-   <input type="radio" name="gender" value="other">Other<br><br>
-  <label for="mobile">Mobile</label><br>
-   <input type="tel" name="mobile" placeholder="10 Digit Mobile Number">
-  <br><br>
-  <label for="e-mail">E-mail</label><br>
-   <input type="email" name="e-mail" placeholder="you@example.com">
-  <br><br>
-  <label for="address">Address</label><br>
-   <input type="text" name="address-line-1" placeholder="Address Line 1" maxlength=50><br>
-   <input type="text" name="address-line-2" placeholder="Address Line 2" maxlength=50><br>
-   <input type="text" name="city" placeholder="City">
-   <input type="text" name="state" placeholder="State"><br>
-   <input type="text" name="pincode" pattern="[0-9]{6}" placeholder="PinCode">
-  <br><br>
-  <label for="cid">Customer ID</label><br>
-   <input type=text name="cid" pattern="[0-9]{8}">
-  <br><br><br>
-  <label for="password"> Password </label><br>
-   <input type="password" name="password" placeholder="create password"><br><br>
-  <button  type="submit">Register</button>
-  <button type="reset">Clear</button>
- </form>
+<body>
+	<form action="register.php" method="post" accept-charset="utf-8" name="registration" onsubmit="return formValidate()">
+		<div class ="init">
+		<h1><center>Customer Registration Form</center></h1>
+			<p>Provide the essential information in the customer registration form for banking transactions. All mandatory fields are marked with an asterisk(*).</p>
+			<p id="title1">Contact Information</p>
+		</div>
+			Name*<br><input type="text" name="first_name" placeholder="First Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'First Name'" required>
+			<input type="text" name="middle_name" placeholder="Middle Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Middle Name'" required>
+   			<input type="text" name="last_name" placeholder="Last Name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Last Name'" required>
+   			<br>
+   			Telephone*<br><input type="tel" name="mobile" id="num" placeholder="10-Digit Mobile Number" onfocus="this.placeholder = ''" onblur="this.placeholder = '10-Digit Mobile Number'" required>
+   			<br>
+   			E-mail*<br><input type="email" name="e-mail" placeholder="you@example.com" onfocus="this.placeholder = ''" onblur="this.placeholder = 'you@example.com'"" id="email" required>
+   			<br>
+   			Home Address*<br><input type="text" name="address-line-1" placeholder="Address Line 1" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address Line 1'"  maxlength=50 required>
+  			<input type="text" name="address-line-2" placeholder="Address Line 2" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Address Line 2'" maxlength=50>
+  			<br>
+   			<select name="city" required>
+   				<option selected disabled>Enter City</option>
+   				<option>Mumbai</option>
+   				<option>Pune</option>
+   				<option>Navi Mumbai</option>
+   				<option>Aurangabad</option>
+   				<option>Nanded</option>
+   				<option>Nagpur</option>
+   				<option>Thane</option>
+   			</select>
+   			<br>
+   			<input type="text" name="state" placeholder="State" onfocus="this.placeholder = ''" onblur="this.placeholder = 'State'" required>
+   			<input type="text" name="pincode" pattern="[0-9]{6}" placeholder="Postal/Zip Code" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Postal/Zip Code'" required>
+   			<br>
+   			Date of Birth<br><input type="date" name="dob">
+   			<br>
+   			Gender*<br><br><input type="radio" name="gender" value="male" name="msex">Male
+   			<input type="radio" name="gender" value="female" name="fsex">Female
+   			<br>
+   			<br>
+   			Customer ID*<br><input type=text name="cid" pattern="[0-9]{8}" placeholder="8-Digit Customer ID" onfocus="this.placeholder = ''" onblur="this.placeholder = '8-Digit Customer ID'" required>
+   			<br>
+   			Password*<br><input type="password" name="password" placeholder="Enter Password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Password'" required>
+   			<button name='validate' type="submit">Register</button>
+  			<button type="reset">Clear</button>	
+	</div>		
+	</form>	
+	<script>
+var myInput = document.getElementById("psw");
+var letter = document.getElementById("letter");
+var capital = document.getElementById("capital");
+var number = document.getElementById("number");
+var length = document.getElementById("length");
+
+function validateEmail(emailField){
+        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+        if (reg.test(emailField.value) == false) 
+        {
+            alert('Invalid Email Address');
+            return false;
+        }
+
+        return true;
+
+}
+	</script>
 </body>
 </html>

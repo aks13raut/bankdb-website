@@ -1,0 +1,74 @@
+body { 
+    font-family: Arial, Helvetica, sans-serif;
+    width: 40%;
+    margin:0 auto;
+    background-image: url("UserImage3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+form {
+    border:1px solid;
+    border-radius:30px;
+    width: 400px;
+    margin: 0 auto;
+    opacity: 1.0;
+    margin-top:60px;
+    background-color:white;
+    opacity:0.9;
+}
+
+.formlayout {
+    position: relative;
+}
+
+input[type=password], input[type=text] {
+    width: 80%;
+    border-radius: 25px;
+    padding: 12px 20px;
+    margin: 20px 40px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    opacity: 1.0;
+}
+
+button {
+    background-color: #4CAF50;
+    border-radius: 25px;
+    color: white;
+    padding: 14px 20px;
+    margin: 20px 40px;
+    border: none;
+    cursor: pointer;
+    width: 80%;
+}
+
+*:focus {
+    outline: none;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+input[type=submit] {
+    background-color: #51E8D6;
+    color: white;
+    margin: 20px 40px;
+}
+
+input[type=checkbox] {
+    color: white;
+    margin: 10px 5px 20px 30px;
+}

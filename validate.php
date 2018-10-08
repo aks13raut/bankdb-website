@@ -20,10 +20,11 @@ try {
 	if ($_SESSION['uid'] > 0) {
 		echo "<script>location.href = 'customerPage.php';</script>";
 	}
-	else if($_SESSION['uid'] == 0){
+	else if($_SESSION['uid'] === '0'){
 		echo "<script>location.href = 'adminPage.php';</script>";
 	}
 	else {
+		
 		echo "<script>window.alert('Incorrect Login Credentials');
 		location.href = 'login.html';</script>";
 	}

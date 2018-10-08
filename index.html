@@ -1,13 +1,17 @@
+<!DOCTYPE html>
 <html>
 <head>
- <title>Bank</title>
+ <title>Login</title>
 </head>
-<body>
- <a href="registration.html">Register</a><br>
- <a href="test.php">Test</a><br>
- <a href="login.html">Login</a><br>
- <div> not to be used before Login:-</div>
- <a href="transfer.php">Transfer Money</a><br>
- <a href="addAcc.html">Add Account</a><br>
+<body bgcolor=#D1F2EB font-color=#1C2833>
+ <center><h1>Login</h1></center>
+ <hr>
+ <form name="loginForm" action="validate.php" method="POST">
+  <label for="e-mail"> Username </label><br> 
+   <input type="text" name="e-mail" placeholder="registerd email-id" required><br><br>
+  <label for="password"> Password </label><br>
+   <input type="password" name="password" required><br><br>
+  <button type="submit">Login</button>
+ </form>
 </body>
 </html>

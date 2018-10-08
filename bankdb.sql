@@ -2,8 +2,8 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Sep 30, 2018 at 03:21 PM
+-- Host: 127.0.0.1
+-- Generation Time: Oct 08, 2018 at 10:18 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -40,7 +40,10 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`acc_no`, `holder`, `balance`, `status`) VALUES
-('1234567788', '12345678', '54000.35', 'active');
+('1213415412', '12345679', '20000.00', 'active'),
+('1231230987', '12345680', '55000.00', 'active'),
+('1234567788', '12345678', '54000.35', 'active'),
+('1234567878', '12345678', '14000.00', 'active');
 
 -- --------------------------------------------------------
 
@@ -62,7 +65,10 @@ CREATE TABLE `address` (
 --
 
 INSERT INTO `address` (`id`, `addr_line1`, `addr_line2`, `city`, `state`, `pincode`) VALUES
-(4, '201, kalpyog hsg. soc.', 'sahkar nagar, opp. to mane gas', 'thane', 'maharashtra', '400606');
+(4, '201, kalpyog hsg. soc.', 'sahkar nagar, opp. to mane gas', 'thane', 'maharashtra', '400606'),
+(6, '402, Nilkantha heights', 'devdaya nagar', 'Thane', 'Maharashtra', '400607'),
+(8, '304, sky view', 'gokhle road', 'Pune', 'Maharashtra', '400612'),
+(9, '203, nilkanth heights, ', '', 'Mumbai', 'Maharashtra', '400602');
 
 -- --------------------------------------------------------
 
@@ -88,7 +94,10 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`id`, `f_name`, `m_name`, `l_name`, `perm_addr`, `cors_addr`, `mobile`, `email`, `gender`, `dob`) VALUES
-('12345678', 'Akshat', 'Girdhari', 'Raut', 4, 4, '7715887414', 'aks13raut@gmail.com', 'male', '1999-06-13');
+('12345678', 'Akshat', 'Girdhari', 'Raut', 4, 4, '7715887414', 'aks13raut@gmail.com', 'male', '1999-06-13'),
+('12345679', 'manish', 'ramarao', 'pethe', 6, 6, '9861387811', 'manish@outllook.com', 'male', '1970-11-21'),
+('12345680', 'saurabh', 'suchivrat', 'daware', 8, 8, '9029455879', 'saudawre@gmail.com', 'male', '1998-04-22'),
+('12345681', 'ashwini', 'rahul', 'joshi', 9, 9, '9812343431', 'ashwini@email.com', 'female', '1997-03-21');
 
 -- --------------------------------------------------------
 
@@ -103,6 +112,13 @@ CREATE TABLE `transaction` (
   `amount` decimal(13,2) NOT NULL,
   `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `transaction`
+--
+
+INSERT INTO `transaction` (`tid`, `from_acc`, `to_acc`, `amount`, `date_time`) VALUES
+(1, '1231230987', '1213415412', '20000.00', '2018-10-08 20:12:39');
 
 -- --------------------------------------------------------
 
@@ -121,7 +137,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `pswd`) VALUES
-(5, 'aks13raut@gmail.com', 0x9aed13e7efe479ba5fbf227221cefeb9);
+(0, 'admin', 0x34e0d10dc7378011d50aa0fa2f81e7c2),
+(5, 'aks13raut@gmail.com', 0x9aed13e7efe479ba5fbf227221cefeb9),
+(8, 'manish@outllook.com', 0x05d1b860173c177c54e316663c3ac670),
+(11, 'saudawre@gmail.com', 0x4c0c4a5b56eca7e7c0d38e409b165252),
+(12, 'ashwini@email.com', 0x587cca51142976a8400f12d58d8b087f);
 
 --
 -- Indexes for dumped tables
@@ -173,19 +193,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `tid` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `tid` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables

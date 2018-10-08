@@ -17,7 +17,7 @@ class TableRows extends RecursiveIteratorIterator {
 		parent::__construct($it,self::LEAVES_ONLY);
 	}
 	function current() {
-		return "<td style='width:150px;border:1px solid black;'>".parent::current()."</td>";
+		return "<td style='width:150px;border:1px solid #35514e;'>".parent::current()."</td>";
 	}
 	function beginChildren() {
 		echo "<tr>";
@@ -41,11 +41,27 @@ function displayCustomer($pdo) {
 	$stmt->bindValue(':cid', $_SESSION['cid']);
 	$stmt->execute();
 	$row = $stmt->fetch(\PDO::FETCH_ASSOC);
-	echo "<table style='border: solid 1px black;' cellspacing=10>";
-	foreach($row as $k=>$v) {
-		echo "<tr><th align='left'>".$k."</th>
-	<td style='width:150px;border:1px solid black;'>".$v."</td></tr>";
-	}
+	echo "<table class='customer_table' >";
+	echo "<tr>
+			<th align='left'>Customer Id</th>
+			<td>".$_SESSION['cid']."</td>
+		  </tr>";
+	echo "<tr>
+			<th align='left'>Name</th>
+			<td>".$row['f_name']." ".$row['m_name']." ".$row['l_name']."</td>
+		  </tr>";
+	echo "<tr>
+			<th align='left'>Email</th>
+			<td>".$row['email']."</td>
+		  </tr>";
+	echo "<tr>
+			<th align='left'>Gender</th>
+			<td>".$row['gender']."</td>
+		  </tr>";
+	echo "<tr>
+			<th align='left'>DOB</th>
+			<td>".$row['dob']."</td>
+		  </tr>";
 	echo "</table>";
 	return;
 }
@@ -55,7 +71,7 @@ function displayAcc($pdo) {
 	$stmt->bindValue(':cid', $_SESSION['cid']);
 	$stmt->execute();
 	$res = $stmt->setFetchMode(\PDO::FETCH_ASSOC);
-	echo "<table style='border: solid 1px black;'>";
+	echo "<table style='border: solid 1px #35514e;'>";
 	echo "<tr><th>Account Number</th><th>Balance</th><th>Status</th></tr>";
 	foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
 		echo $v;
@@ -70,7 +86,7 @@ function displayTransaction($pdo) {
 	$stmt->bindValue(':cid', $_SESSION['cid']);
 	$stmt->execute();
 	$res = $stmt->setFetchMode(\PDO::FETCH_ASSOC);
-	echo "<table style='border: solid 1px black;'>";
+	echo "<table style='border: solid 1px #35514e;'>";
 	echo "<tr><th>TID</th><th>FROM</th><th>TO</th><th>Amount</th><th>Date & Time</th></tr>";
 	foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
 		echo $v;
@@ -80,18 +96,79 @@ function displayTransaction($pdo) {
 }
 ?>
 <html>
-<head><title>Dashboard</title></head>
-<body>
- <a href="transfer.php">Transfer Money</a><br>
- <a href="addAcc.html">Add Account</a><br>
-<h4>Your Details</h4>
+<head>
+ <title>Dashboard</title>
+ <style>
+h1 {
+	width=100%;
+	background-color:#04302b;
+	color: #dbfffb;
+	padding: 20px;
+}
+#holder {
+	padding: 8px;
+	background-color: #04302b;
+	color: #dbe0df;
+	margin: 0 5px 10px 5px;
+
+}
+#holder table{
+	color: #fff; 
+	border: 1px solid #0f233f;
+}
+
+.customer_table {
+   color: #dbfffb; 
+}
+th {
+   color: #bbb;
+   padding: 5px 10px;
+}
+td {
+	padding: 7px;
+}
+.customer_table td {
+   border: 1px solid #35514e;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 5px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #f1f1f1;
+  background-color: #086d62;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px #999;
+  margin: 15px;
+}
+.btn:hover {background-color: #064c44}
+
+.btn:active {
+  background-color: #064c44;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+</style>
+</head>
+<body style='background-color:#dbfffb;color:#0f443f'>
+<h1><center>Welcome</center></h1>
 <?php
+
+echo "<h2>Your Details</h2><div id='holder'>";
 displayCustomer($pdo);
-echo "<h4>Your Accounts</h4>";
+echo "</div>";
+echo "<h2>Your Accounts</h2><div id='holder'>";
 displayAcc($pdo);
-echo "<h4>Your Transactions</h4>";
+echo "</div>";
+echo "<h2>Transactions</h2><div id='holder'>";
 displayTransaction($pdo);
+echo "</div>";
 ?>
+<a class='btn' href="transfer.php">Transfer Money</a>
+<a class='btn' href="addAcc.html">Add Account</a>
 </body>
 </html>
 <?php

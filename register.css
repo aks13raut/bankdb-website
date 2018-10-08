@@ -1,0 +1,55 @@
+body { 
+    font-family: Calibri, Helvetica, sans-serif;
+	font-size: 20px;
+	color:grey;
+}
+
+.init{
+	width: 80%;
+    position: relative;	
+}
+
+form {
+	position: relative;
+	resize: both;
+	width: 50%;
+    margin: 0 auto;
+    outline:1px solid;
+    outline-offset:15px;
+    padding-left: 110px;
+}
+
+input[type=password], input[type=text], input[type=email], input[type=date], input[type=tel], select{
+    width: 80%;
+    padding: 12px 20px;
+    margin: 20px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input[type=radio]{
+	margin:10px 30px;
+}
+
+#title1{
+	font-family: Calibri, Helvetica, sans-serif;
+	font-size: 30px;
+	color: #25A711;
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+button {
+    background-color: #44ED29;
+    border-radius: 25px;
+    color: white;
+    padding: 14px 20px;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+    width: 40%;
+}
+
