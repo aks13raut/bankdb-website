@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 13, 2018 at 04:41 PM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.10
+-- Host: localhost
+-- Generation Time: Oct 18, 2018 at 06:05 PM
+-- Server version: 10.2.12-MariaDB
+-- PHP Version: 7.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bankdb`
+-- Database: `id6155041_bankdb`
 --
 
 -- --------------------------------------------------------
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `account` (
   `acc_no` char(10) NOT NULL,
   `holder` decimal(8,0) NOT NULL,
-  `balance` decimal(13,2) NOT NULL,
+  `balance` decimal(13,2) DEFAULT NULL,
   `status` enum('frozen','closed','unapproved','active') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -40,11 +40,15 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`acc_no`, `holder`, `balance`, `status`) VALUES
-('1213415412', '12345679', '40000.00', 'active'),
-('1231230987', '12345680', '55000.00', 'unapproved'),
-('1234567788', '12345678', '34000.35', 'active'),
-('1234567878', '12345678', '14000.00', 'active'),
-('1928374655', '12345685', '0.00', 'unapproved');
+('1122334455', 45454545, 45000.00, 'active'),
+('1213415412', 12345679, 19500.00, 'active'),
+('1231230987', 12345680, 55500.00, 'unapproved'),
+('1234567788', 12345678, 54000.35, 'active'),
+('1234567878', 12345678, 19000.00, 'active'),
+('1728394466', 99988776, 18000.00, 'active'),
+('2323454577', 45454545, 12000.00, 'frozen'),
+('5588446622', 12345679, NULL, 'unapproved'),
+('6767332211', 33334444, 30000.00, 'closed');
 
 -- --------------------------------------------------------
 
@@ -55,7 +59,7 @@ INSERT INTO `account` (`acc_no`, `holder`, `balance`, `status`) VALUES
 CREATE TABLE `address` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `addr_line1` text NOT NULL,
-  `addr_line2` text,
+  `addr_line2` text DEFAULT NULL,
   `city` varchar(30) NOT NULL,
   `state` varchar(30) NOT NULL,
   `pincode` char(6) NOT NULL
@@ -70,7 +74,11 @@ INSERT INTO `address` (`id`, `addr_line1`, `addr_line2`, `city`, `state`, `pinco
 (6, '402, Nilkantha heights', 'devdaya nagar', 'Thane', 'Maharashtra', '400607'),
 (8, '304, sky view', 'gokhle road', 'Pune', 'Maharashtra', '400612'),
 (9, '203, nilkanth heights, ', '', 'Mumbai', 'Maharashtra', '400602'),
-(10, '302, ramnicash soc.', 'lokmanya nagar', 'Thane', 'Maharashtra', '400604');
+(11, 'tandala', '', 'Mumbai', 'maharashtra', '400022'),
+(12, 'sion,pratiksha nagar', '', 'Mumbai', 'maharashtra', '400022'),
+(13, '2/33 Madhavi Society', 'Mogal Lane, Mahim(W)', 'Mumbai', 'Maharashtra', '400016'),
+(14, 'wadala(E)', '', 'Pune', 'maharashtra', '400033'),
+(16, 'Home', 'Address', 'Thane', 'Maharashtra', '622722');
 
 -- --------------------------------------------------------
 
@@ -96,11 +104,14 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`id`, `f_name`, `m_name`, `l_name`, `perm_addr`, `cors_addr`, `mobile`, `email`, `gender`, `dob`) VALUES
-('12345678', 'Akshat', 'Girdhari', 'Raut', 4, 4, '7715887414', 'aks13raut@gmail.com', 'male', '1999-06-13'),
-('12345679', 'manish', 'ramarao', 'pethe', 6, 6, '9861387811', 'manish@outllook.com', 'male', '1970-11-21'),
-('12345680', 'saurabh', 'suchivrat', 'daware', 8, 8, '9029455879', 'saudawre@gmail.com', 'male', '1998-04-22'),
-('12345681', 'ashwini', 'rahul', 'joshi', 9, 9, '9812343431', 'ashwini@email.com', 'female', '1997-03-21'),
-('12345685', 'omkar', 'rajesh', 'desai', 10, 10, '9854322141', 'omkardesai@gmail.com', 'male', '1998-07-18');
+(12345671, 'Jayesh', 'Manik', 'Mandlik', 16, 16, '9920013150', 'jayesh.mandlik@vit.edu.in', 'male', '1999-08-18'),
+(12345678, 'Akshat', 'Girdhari', 'Raut', 4, 4, '7715887414', 'aks13raut@gmail.com', 'male', '1999-06-13'),
+(12345679, 'manish', 'ramarao', 'pethe', 6, 6, '9861387811', 'manish@outllook.com', 'male', '1970-11-21'),
+(12345680, 'saurabh', 'suchivrat', 'daware', 8, 8, '9029455879', 'saudawre@gmail.com', 'male', '1998-04-22'),
+(12345682, 'RAJ', 'malhotra', 'war', 11, 11, '9898972872', 'amsksjdjas@gmail.com', 'male', '1997-02-25'),
+(33334444, 'SHUBHAM', 'RAVINDRA', 'DASARWAR', 12, 12, '9876563412', 'shubham123@gmail.com', 'male', '1997-12-02'),
+(45454545, 'ABHIJEET', 'MADHAVRAO', 'JADHAV', 14, 14, '9845672311', 'abhi@gmail.com', 'male', '1999-01-03'),
+(99988776, 'Mohit', 'Sachchidanand', 'Kambli', 13, 13, '9820935639', 'mohitkambli8@gmail.com', 'male', '1998-06-01');
 
 -- --------------------------------------------------------
 
@@ -109,11 +120,11 @@ INSERT INTO `customer` (`id`, `f_name`, `m_name`, `l_name`, `perm_addr`, `cors_a
 --
 
 CREATE TABLE `transaction` (
-  `tid` bigint(20) UNSIGNED NOT NULL,
+  `tid` bigint(20) UNSIGNED ZEROFILL NOT NULL,
   `from_acc` char(10) NOT NULL,
   `to_acc` char(10) NOT NULL,
   `amount` decimal(13,2) NOT NULL,
-  `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date_time` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -121,8 +132,11 @@ CREATE TABLE `transaction` (
 --
 
 INSERT INTO `transaction` (`tid`, `from_acc`, `to_acc`, `amount`, `date_time`) VALUES
-(1, '1231230987', '1213415412', '20000.00', '2018-10-08 20:12:39'),
-(2, '1234567788', '1213415412', '20000.00', '2018-10-13 13:10:34');
+(00000000000000000001, '1231230987', '1213415412', 20000.00, '2018-10-08 20:12:39'),
+(00000000000000000002, '1728394466', '1234567878', 5000.00, '2018-10-09 07:07:31'),
+(00000000000000000003, '2323454577', '1234567788', 356.45, '2018-10-01 02:04:18'),
+(00000000000000000004, '6767332211', '1728394466', 1200.00, '2018-10-08 09:04:01'),
+(00000000000000000005, '1213415412', '1231230987', 500.00, '2018-10-18 16:27:26');
 
 -- --------------------------------------------------------
 
@@ -146,7 +160,11 @@ INSERT INTO `user` (`id`, `email`, `pswd`) VALUES
 (8, 'manish@outllook.com', 0x05d1b860173c177c54e316663c3ac670),
 (11, 'saudawre@gmail.com', 0x4c0c4a5b56eca7e7c0d38e409b165252),
 (12, 'ashwini@email.com', 0x587cca51142976a8400f12d58d8b087f),
-(13, 'omkardesai@gmail.com', 0xa047d8f579daf3520a1032d83bc331c8);
+(15, 'amsksjdjas@gmail.com', 0x6d7f30d28ebe698ee9adf20db0a1ff73),
+(16, 'shubham123@gmail.com', 0x31fd98eaf91567119a41a33e8e4733c0),
+(17, 'mohitkambli8@gmail.com', 0xcf27492db14aaf5465e82ca913b342ed),
+(18, 'abhi@gmail.com', 0xc5fbb349270b60559cb78a92ea9e76f1),
+(21, 'jayesh.mandlik@vit.edu.in', 0x0057469274a3ac686a1fc4fc82bcb4d9);
 
 --
 -- Indexes for dumped tables
@@ -198,19 +216,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `address`
 --
 ALTER TABLE `address`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `transaction`
 --
 ALTER TABLE `transaction`
-  MODIFY `tid` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `tid` bigint(20) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables

@@ -1,0 +1,18 @@
+div {
+    width: 200px;
+    background-color: #eee;
+    overflow: visible;
+	border-style: double;
+}
+body
+{
+	background-image:url(image2.jpg);
+	background-repeat:no-repeat;
+	background-size: 100% 100%	
+}
+h6{
+	font-family: "Times New Roman", Times, serif;
+	font-size: 40px;
+	font-weight: bold;
+	color:blue;
+}

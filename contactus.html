@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./FINALP_files/navi.css">
+<link rel="stylesheet" href="./FINALP_files/mainp.css">
+<link rel="stylesheet" href="./FINALP_files/footer.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="./FINALP_files/w3.css">
+<link rel="icon" href="logo2.png">
+<link rel="stylesheet" href="ourteam.css">
+<link rel="stylesheet" href="contactus.css">
+
+
+<script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+     dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " w3-opacity-off";
+}
+</script>
+
+<style>
+.mySlides {display:none}
+.demo {cursor:pointer}
+</style>
+</head>
+<body style="background-color:powderblue;">
+<font color="blue">
+
+<nav>
+  <ul>
+ <nav>
+	<ul>
+	  <li><a href="index.html"><img src="./images/home.png" style="width:32px;height:32px"></a></li>
+	  <li><a href="aboutus.html" style="height:32px">About Us</a></li>
+	  <li><a href="ourteam.html" style="height:32px">Our Team</a></li>
+	</ul>
+</nav
+
+<div class="container">
+  <form action="action_page.php">
+
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+    <label for="country">Country</label>
+    <select id="country" name="country">
+      <option value="australia">INDIA</option>
+      <option value="canada">Canada</option>
+      <option value="usa">USA</option>
+    </select>
+
+    <label for="subject">Subject</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+    <input type="submit" value="Submit">
+
+  </form>
+</div>
+<footer class="ct-footer">
+    <div class="container">
+        <ul class="ct-footer-list text-center-sm">
+            <li>
+				<h2 class="ct-footer-list-header">Learn More</h2>
+                <ul>
+                <li>
+					<a href="index.html">Company</a>
+					<a href="index.html">Clients</a>
+					<a href="index.html">News</a>
+					<a href="index.html">Careers</a>
+                </li>                
+                </ul>
+            </li>
+            <li>
+                <h2 class="ct-footer-list-header">Services</h2>
+                <ul>
+                <li>
+					<a href="index.html">Loan</a>
+					<a href="index.html">FD</a>
+					<a href="index.html">Locker</a>
+					<a href="index.html">Gold Loan</a>
+					<a href="index.html">Support</a>
+                </li>
+                </ul>
+            </li>
+            <li>
+                <h2 class="ct-footer-list-header">The Industry</h2>
+                <ul>
+                <li>
+					<a href="index.html">Thought Leadership</a>
+					<a href="index.html">Webinars</a>
+					<a href="index.html">Events</a>
+					<a href="index.html">Sponsorships</a>
+					<a href="index.html">Training Program</a>
+					<a href="index.html">Advisors</a>
+					<a href="index.html">Activities &amp; Campaigns</a>
+				</li>
+                </ul>
+            </li>
+            <li>
+                <h2 class="ct-footer-list-header">Public Relations</h2>
+                <ul>
+                <li>
+					<a href="index.html">WebCorpCo Blog</a>
+					<a href="index.html">Hackathons</a>
+					<a href="index.html">Videos</a>
+					<a href="index.html">News Releases</a>
+					<a href="index.html">Newsletters</a>
+				</li>
+                </ul>
+            </li>
+            <li>
+                <h2 class="ct-footer-list-header">About</h2>
+                <ul>
+                <li>
+					<a href="index.html">FAQ</a>
+					<a href="index.html">Our Board</a>
+					<a href="ourteam.html">Our Staff</a>
+					<a href="contactus.html">Contact Us</a>
+				</li>
+                </ul>
+            </li>
+        </ul>
+	<ul class="ct-socials">
+		<li>
+			<a href="https://www.facebook.com/login/" target="_blank"><img alt="facebook" src="./images/facebook.png" style="width:20px ; height:20px"></a>
+		</li>
+		<li>
+			<a href="https://twitter.com/login" target="_blank"><img alt="twitter" src="./images/twitter.png" style="width:20px ; height:20px"></a>
+		</li>
+		<li>
+			<a href="https://www.youtube.com/" target="_blank"><img alt="youtube" src="./images/youtube.png" style="width:20px ; height:20px"></a>
+		</li>
+		<li>
+			<a href="https://www.instagram.com/" target="_blank"><img alt="instagram" src="./images/insta.png" style="width:20px ; height:20px"></a>
+		</li>
+	</ul>
+    </div>         
+	<div class="inner-right">
+		<p>Copyright © 2018 AKSHATAMOLADITYA</p>
+	</div>                   
+</footer>
+</font>
+
+</footer></b></b></body></html>

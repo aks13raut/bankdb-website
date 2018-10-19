@@ -8,7 +8,6 @@ if (!isset($_SESSION["uid"]) or $_SESSION["uid"]<=0){
 try {
 	$pdo = Connection::get()->connect();
 	$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-	echo $_SESSION['cid'];
 	
 } catch (\PDOException $e) {
 	echo $e->getMessage();
@@ -28,22 +27,45 @@ function listAccNo($pdo) {
 <!DOCTYPE html>
 <html>
 <head>
+ <link rel="stylesheet" href="./styles/style3.css">
+ <link rel="stylesheet" href="./styles/homepage.css">
  <title>Transfer</title>
 </head>
-<body bgcolor=#D1F2EB font-color=#1C2833>
- <center><h1>Trnasfer Money</h1></center>
+<body>
+<nav>
+  <ul>
+	<li><a href="customerPage.php"><img src="./images/home.png" style="width:32px;height:32px"></a></li>
+	<li><a href="#news" style="height:32px">News</a></li>
+	<li><a href="transfer.php" style="height:32px">Transfer Money</a></li>
+	<li><a href="addAcc.html" style="height:32px">Add Account</a></li>
+	<li><a href="customerPage.php#transactions_view" style="height:32px">Transactions</a></li>
+	<li style="float:right">
+	<a href="#" onclick="document.forms['logoutForm'].submit();" style="height:32px">Logout</a></li>
+	<form name='logoutForm' action='logout.php' method='get'>
+	</form>
+  </ul>
+</nav>
+ <center>
+ <h1>Transfer Money</h1>
  <hr>
+ <br>
+ <br>
  <form name="transferForm" action="transferMoney.php" method="POST">
   <label for="to_acc"> To account no: </label> 
-   <input type="text" pattern="[0-9]{10}" name="to_acc" required><br>
+   <input type="text" pattern="[0-9]{10}" name="to_acc" style="width:97px;" required><br>
   <label for="from_acc"> From account no: </label>
 <?php
   listAccNo($pdo);
 ?>
   <label for="amount"> Amount: </label>
-   <input type="text" pattern="[0-9]+" name="amount" ><br>
-  <button type="submit">Transfer</button>
+   <input type="text" pattern="[0-9]+" name="amount" >₹<br>
+   <br>
+  <button type="submit" style="background-color: #ffa500;
+  border: none; color: white; padding: 15px 32px;
+  text-align: center; text-decoration: none;
+  display: inline-block;">Transfer</button>
  </form>
+ </center>
 </body>
 </html>
 <?php

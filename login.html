@@ -8,27 +8,27 @@
 
 <body>
 
-    <div class="formlayout">
-        <form name="loginForm" action="validate.php" method="POST">
+    <div id='login_form' class="formlayout">
+	<center>
+    <form name="loginForm" action="validate.php" method="POST">
+    <h2 align= center>Login</h2>
 
-          <h2 align= center>Login</h2>
-
-          <div class="imgcontainer">
-            <img src="UserImage.png" alt="Avatar" class="avatar">
-          </div>
-
-          <div class="container">
-            <input type="text" name="e-mail" placeholder="Enter Registred Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Registred Email'" required>
-
-            <input type="password" id="psw" name="password"  required>
-                
-            <button type="submit">Login</button>
-
-            <input type="checkbox" onclick="myFunction()">Show Password
-
-          </div>
-        </form>
+    <div class="imgcontainer">
+        <img src="UserImage.png" alt="Avatar" class="avatar">
     </div>
+
+    <div class="container">
+        <input type="text" name="e-mail" placeholder = 'Registred Email' required>
+        <input type="password" id="psw" name="password" placeholder = "Password" required>
+          
+        <button id='login_btn' type="submit">Login</button>
+		<br>
+        <input type="checkbox" onclick="myFunction()">Show Password
+
+    </div>
+    </form>
+	</center>
+	</div>
 
 </body>
 </html>

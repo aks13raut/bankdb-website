@@ -1,0 +1,64 @@
+form {
+    border-radius:30px;
+    width: 400px;
+    margin: 0 auto;
+    margin-top:60px;
+    background-color:orange;
+    opacity:0.8;
+	color: white;
+}
+
+.formlayout {
+    position: relative;
+}
+
+input[type=password], input[type=text] {
+    width: 80%;
+    border-radius: 25px;
+    padding: 12px 20px;
+    margin: 20px 40px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    opacity: 1.0;
+}
+
+#login_btn {
+    background-color: #4CAF50;
+    border-radius: 25px;
+    color: white;
+    padding: 14px 20px;
+    margin: 20px 40px;
+    border: none;
+    cursor: pointer;
+    width: 40%;
+}
+
+*:focus {
+    outline: none;
+}
+
+#login_btn:hover {
+    opacity: 0.8;
+}
+
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+input[type=submit] {
+    background-color: #51E8D6;
+    color: white;
+    margin: 20px 40px;
+}
+
+input[type=checkbox] {
+    color: white;
+    margin: 10px 5px 20px 30px;
+}

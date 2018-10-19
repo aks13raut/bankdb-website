@@ -2,8 +2,8 @@
 include 'Connection.php';
 session_start();
 if ($_SESSION["uid"]!=0 or !isset($_SESSION["uid"])){
-	echo "Login as Admin to access this page";
-	header('Location:login.html');
+	echo "<script>window.alert('Login as Admin to access this page');
+	location.href = 'index.html#login_form';</script>";
 }
 try {
 	$pdo = Connection::get()->connect();
@@ -22,7 +22,7 @@ function displayAccApr($pdo) {
 		echo "<form name='approveForm".$count."' action='approveAcc.php' method='POST'>";
 		echo "<input type='hidden' name='acc' value=".$row['acc_no'].">";
 		echo "<br><br><label for='bal'>Balance : </label>";
-		echo "<input type='number' name='bal'><br>";
+		echo "<input type='number' name='bal'>₹<br>";
 		echo "<button type='submit' class='approve_btn'>Approve</button></form></div>";
 		$count += 1;
 	}
@@ -98,7 +98,7 @@ function displayTransaction($pdo) {
 	$stmt->execute();
 	$res = $stmt->setFetchMode(\PDO::FETCH_ASSOC);
 	echo "<table>";
-	echo "<tr><th>TID</th><th>FROM</th><th>TO</th><th>Amount</th><th>Date & Time</th></tr>";
+	echo "<tr><th>TID</th><th>FROM</th><th>TO</th><th>Amount(₹)</th><th>Date & Time</th></tr>";
 	foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
 		echo $v;
 	}
@@ -109,6 +109,32 @@ function displayTransaction($pdo) {
 <html>
 <head>
  <title>Admin Page</title>
+ <script type="text/javascript" src='jquery-3.3.1.min.js'></script>
+ <script type="text/javascript" src="loader.js"></script>
+ <script>
+ google.charts.load("visualization", "1", {packages:["corechart"]});
+ google.charts.setOnLoadCallback(drawChart);
+ function drawChart() {
+	<?php
+	$sql = "SELECT COUNT(acc_no)`count`,`status` FROM account GROUP BY `status`";
+	$stmt = $pdo->prepare($sql);
+	$stmt->execute();
+	$pieData = array();	
+	foreach($stmt->fetchAll(\PDO::FETCH_ASSOC) as $res) {
+		$pieData[] = array($res['status'],$res['count']);
+	}
+	?>
+	var data = new google.visualization.DataTable();
+	data.addColumn('string', 'Status');
+	data.addColumn('number', 'Count');
+	data.addRows(<?php echo json_encode($pieData, JSON_NUMERIC_CHECK); ?>);
+    var options = {
+        title: 'Accounts'
+    };
+    var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+}
+ </script>
 <style>
 #collapsible_holder {
 	padding: 8px;
@@ -201,6 +227,9 @@ function displayTransaction($pdo) {
 </head>
 <body style="background-color: #3c5275;color:#e0ebf9">
 <h1><b><center>Admin Page</center></b></h1>
+<div id="chart_wrap">
+	<div id="chart_div"></div>
+</div>
 <?php
  dispDetails($pdo);
  echo "<div id='collapsible_holder'><h4>Pending Account Approvals</h4>";
@@ -226,6 +255,11 @@ for (i = 0; i < coll.length; i++) {
   });
 }
 </script>
+<form action='logout.php' method='get'>
+<button type='submit' class='approve_btn'>Logout</button>
+<br>
+<br>
+</form>
 </html>
 <?php
 $pdo=NULL;

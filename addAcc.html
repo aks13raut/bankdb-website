@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <link rel="stylesheet" href="./styles/style3.css">
+ <link rel="stylesheet" href="./styles/homepage.css">
  <title>Add Account</title>
 </head>
 <body bgcolor=#D1F2EB font-color=#1C2833>
- <center><h1>Login</h1></center>
+<nav>
+  <ul>
+	<li><a href="customerPage.php"><img src="./images/home.png" style="width:32px;height:32px"></a></li>
+	<li><a href="#news" style="height:32px">News</a></li>
+	<li><a href="transfer.php" style="height:32px">Transfer Money</a></li>
+	<li><a href="addAcc.html" style="height:32px">Add Account</a></li>
+	<li><a href="customerPage.php#transactions_view" style="height:32px">Transactions</a></li>
+	<li style="float:right">
+	<a href="#" onclick="document.forms['logoutForm'].submit();" style="height:32px">Logout</a></li>
+	<form name='logoutForm' action='logout.php' method='get'>
+	</form>
+  </ul>
+</nav>
+ <center>
+ <h1>Login</h1>
  <hr>
+ <br>
  <form name="addAccForm" action="addAcc.php" method="POST">
   <label for="acc_no"> Account Number </label> 
    <input type="text" name="acc_no" placeholder="10 digit account no. provided by bank" required><br><br>
-  <button type="submit">Add</button>
+  <button type="submit" style="background-color: #ffa500;
+  border: none; color: white; padding: 15px 32px;
+  text-align: center; text-decoration: none;
+  display: inline-block;">Add</button>
  </form>
+ </center>
 </body>
 </html>

@@ -26,7 +26,7 @@ try {
 	else {
 		
 		echo "<script>window.alert('Incorrect Login Credentials');
-		location.href = 'login.html';</script>";
+		location.href = 'index.html#login_form';</script>";
 	}
 } catch (\PDOException $e) {
 	echo $e->getMessage();
